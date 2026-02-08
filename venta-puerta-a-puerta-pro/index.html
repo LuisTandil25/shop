@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Venta Pro</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3081/3081648.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: sans-serif; background-color: #f9fafb; margin: 0; padding: 0; height: 100vh; width: 100vw; overflow: hidden; }
+        #root { height: 100%; width: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/"
+      }
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root">
+        <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white;">
+            <div style="width: 50px; height: 50px; border: 5px solid #e5e7eb; border-top: 5px solid #2563eb; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <p style="margin-top: 20px; color: #4b5563; font-weight: 600;">Iniciando Venta Pro...</p>
+        </div>
+    </div>
+    
+    <script type="module" src="./index.tsx"></script>
+    
+    <script>
+        // Registro simplificado para PWABuilder
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Solo registramos si no es un protocolo temporal de editor
+                if (window.location.protocol.indexOf('http') !== -1) {
+                    navigator.serviceWorker.register('./sw.js', { scope: './' })
+                        .then(function(reg) {
+                            console.log('PWA: Registrada con éxito en ' + reg.scope);
+                        })
+                        .catch(function(err) {
+                            console.log('PWA: Fallo en el registro: ', err);
+                        });
+                }
+            });
+        }
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

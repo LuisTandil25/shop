@@ -1,0 +1,9 @@
+
+{
+  "name": "Venta Puerta a Puerta Pro",
+  "description": "Aplicación profesional para preventistas y vendedores puerta a puerta con integración a Google Sheets y tickets de venta.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
